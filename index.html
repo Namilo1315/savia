@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Savia – Software & programación para emprendedoras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Savia organiza tu tiempo y potencia tu marca: turnos online, agenda inteligente, páginas web, landings, apps y sistemas de programación a medida para estéticas y emprendedoras." />
+
+  <!-- Tipografías de marca -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --verde-savia:#4BAF8C;
+      --verde-claro:#A7E3CF;
+      --arena:#F5F1EA;
+      --verde-bosque:#2F6B57;
+      --durazno:#FFCFAE;
+      --texto:#1b2420;
+      --gris:#737373;
+      --negro:#111;
+      --radius-xl:26px;
+      --shadow-soft:0 18px 40px rgba(0,0,0,.07);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{
+      scroll-behavior:smooth;
+      font-size:90%; /* Tamaño general 90% en toda la web */
+    }
+
+    body{
+      font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--texto);
+      background:var(--arena);
+      line-height:1.6;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      width:min(1120px,100% - 2.5rem);
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(245,241,234,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(0,0,0,.03);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.85rem 0;
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    .nav-logo{
+      height:38px;
+      width:auto;
+    }
+    .nav-brand{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+    .nav-brand span:first-child{
+      font-weight:600;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.78rem;
+      color:var(--verde-bosque);
+    }
+    .nav-brand span:last-child{
+      font-size:.72rem;
+      color:var(--gris);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1.75rem;
+      font-size:.9rem;
+    }
+    .nav-links a{
+      color:var(--gris);
+      position:relative;
+      padding-bottom:2px;
+      transition:color .2s ease-out;
+    }
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:0;
+      width:0;
+      height:2px;
+      background:var(--verde-savia);
+      border-radius:999px;
+      transition:.25s ease-out;
+    }
+    /* Hover + activo */
+    .nav-links a:hover::after,
+    .nav-links a.active::after{
+      width:100%;
+    }
+    .nav-links a.active{
+      color:var(--verde-bosque);
+      font-weight:500;
+    }
+
+    .btn{
+      border-radius:999px;
+      padding:.65rem 1.5rem;
+      font-size:.88rem;
+      font-weight:500;
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      justify-content:center;
+      transition:.22s ease-out;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:var(--verde-savia);
+      color:#fff;
+      box-shadow:0 12px 30px rgba(75,175,140,.35);
+    }
+    .btn-primary:hover{
+      background:var(--verde-bosque);
+      transform:translateY(-1px);
+      box-shadow:0 16px 40px rgba(47,107,87,.45);
+    }
+    .btn-outline{
+      background:transparent;
+      color:var(--verde-bosque);
+      border:1px solid rgba(47,107,87,.22);
+    }
+    .btn-outline:hover{
+      background:rgba(167,227,207,.22);
+    }
+
+    /* Mobile nav */
+    .nav-toggle{
+      display:none;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+    }
+    .nav-toggle span{
+      display:block;
+      width:20px;
+      height:2px;
+      background:var(--verde-bosque);
+      border-radius:999px;
+      transition:.25s;
+    }
+    .nav-toggle span + span{
+      margin-top:4px;
+    }
+
+    /* HERO */
+    .hero{
+      padding:3.5rem 0 3rem;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1.1fr;
+      gap:2.5rem;
+      align-items:center;
+    }
+    .eyebrow{
+      font-size:.78rem;
+      text-transform:uppercase;
+      color:var(--verde-bosque);
+      letter-spacing:.22em;
+      font-weight:500;
+      margin-bottom:.85rem;
+    }
+    .hero-title{
+      font-size:2.4rem;
+      line-height:1.1;
+      color:var(--negro);
+      margin-bottom:1rem;
+    }
+    .hero-title span.accent{
+      color:var(--verde-savia);
+    }
+    .hero-sub{
+      font-family:"Cormorant Garamond",serif;
+      font-size:1.25rem;
+      color:var(--gris);
+      margin-bottom:1.8rem;
+    }
+    .hero-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin-bottom:1.6rem;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      padding:.35rem .8rem;
+      border-radius:999px;
+      background:#fff;
+      color:var(--gris);
+      font-size:.75rem;
+      border:1px solid rgba(0,0,0,.03);
+    }
+    .badge-dot{
+      width:7px;height:7px;border-radius:999px;
+      background:var(--verde-savia);
+    }
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      align-items:center;
+      margin-bottom:1rem;
+    }
+    .hero-note{
+      font-size:.78rem;
+      color:var(--gris);
+      display:flex;
+      align-items:center;
+      gap:.35rem;
+    }
+    .hero-note-dot{
+      width:8px;height:8px;border-radius:999px;
+      background:var(--durazno);
+    }
+
+    .hero-card{
+      background:#fff;
+      border-radius:var(--radius-xl);
+      padding:1.75rem 1.6rem;
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(167,227,207,.55), transparent 52%),
+        radial-gradient(circle at 110% 80%, rgba(255,207,174,.7), transparent 55%);
+      opacity:.9;
+      z-index:-1;
+    }
+    .hero-card-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:1rem;
+    }
+    .hero-logo-mark{
+      width:60px;
+    }
+    .hero-pill{
+      font-size:.7rem;
+      padding:.25rem .75rem;
+      border-radius:999px;
+      background:rgba(245,241,234,.9);
+      color:var(--verde-bosque);
+    }
+    .hero-card h2{
+      font-size:1rem;
+      margin-bottom:.3rem;
+      color:var(--verde-bosque);
+    }
+    .hero-card p{
+      font-size:.84rem;
+      color:var(--texto);
+      margin-bottom:1rem;
+    }
+    .hero-card-list{
+      list-style:none;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:.4rem .75rem;
+      margin-bottom:1rem;
+      font-size:.8rem;
+    }
+    .hero-card-list li::before{
+      content:"✓";
+      margin-right:.45rem;
+      color:var(--verde-bosque);
+      font-weight:600;
+    }
+    .hero-mini-label{
+      font-size:.72rem;
+      color:var(--gris);
+      margin-top:.2rem;
+    }
+
+    /* SECTION BASE */
+    section{
+      padding:3.5rem 0;
+    }
+    section[id]{
+      scroll-margin-top:90px; /* para que el header sticky no corte el inicio de la sección */
+    }
+    .section-header{
+      text-align:center;
+      max-width:650px;
+      margin:0 auto 2.5rem;
+    }
+    .section-eyebrow{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      color:var(--verde-bosque);
+      margin-bottom:.6rem;
+    }
+    .section-title{
+      font-size:1.7rem;
+      margin-bottom:.5rem;
+      color:var(--negro);
+    }
+    .section-sub{
+      font-size:.92rem;
+      color:var(--gris);
+    }
+
+    /* QUÉ ES SAVIA */
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.1fr 1.1fr;
+      gap:2.3rem;
+      align-items:flex-start;
+    }
+    .highlight-card{
+      background:#fff;
+      border-radius:22px;
+      padding:1.4rem 1.4rem 1.2rem;
+      box-shadow:var(--shadow-soft);
+      font-size:.9rem;
+    }
+    .highlight-card h3{
+      font-size:1.05rem;
+      margin-bottom:.45rem;
+      color:var(--verde-bosque);
+    }
+    .highlight-tag{
+      display:inline-flex;
+      align-items:center;
+      padding:.28rem .75rem;
+      border-radius:999px;
+      background:rgba(167,227,207,.26);
+      font-size:.72rem;
+      color:var(--verde-bosque);
+      margin-bottom:.55rem;
+    }
+    .highlight-list{
+      margin-top:.7rem;
+      display:grid;
+      gap:.35rem;
+      list-style:none;
+      font-size:.86rem;
+    }
+    .highlight-list li::before{
+      content:"• ";
+      color:var(--verde-savia);
+      font-weight:bold;
+    }
+
+    /* SERVICIOS */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.6rem;
+    }
+    .card{
+      background:#fff;
+      border-radius:20px;
+      padding:1.3rem 1.25rem 1.4rem;
+      box-shadow:0 12px 30px rgba(0,0,0,.05);
+      font-size:.9rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto -40% -40% auto;
+      background:radial-gradient(circle at 100% 100%, rgba(167,227,207,.9), transparent 55%);
+      opacity:.25;
+      pointer-events:none;
+    }
+    .card-icon{
+      width:30px;height:30px;
+      border-radius:12px;
+      background:rgba(75,175,140,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:.8rem;
+      font-size:1rem;
+      color:var(--verde-bosque);
+    }
+    .card h3{
+      font-size:1rem;
+      margin-bottom:.4rem;
+      color:var(--negro);
+    }
+    .card span.small{
+      font-size:.76rem;
+      color:var(--gris);
+      display:block;
+      margin-bottom:.5rem;
+    }
+    .card ul{
+      list-style:none;
+      display:grid;
+      gap:.3rem;
+      font-size:.84rem;
+    }
+    .card ul li::before{
+      content:"– ";
+      color:var(--verde-bosque);
+      font-weight:600;
+    }
+
+    /* BANNER PROMO FIJO */
+    .promo-strip{
+      margin:2.3rem auto 0;
+      background:linear-gradient(135deg,var(--verde-savia),var(--verde-bosque));
+      color:#fff;
+      border-radius:22px;
+      padding:1.3rem 1.7rem 1.4rem;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:.6rem;
+      box-shadow:0 16px 40px rgba(9,32,26,.4);
+      font-size:.9rem;
+      text-align:center;
+    }
+    .promo-text{
+      max-width:640px;
+    }
+    .promo-eyebrow{
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      opacity:.9;
+      margin-bottom:.2rem;
+    }
+    .promo-main{
+      font-size:.96rem;
+      margin-bottom:.25rem;
+    }
+    .promo-detail{
+      font-size:.82rem;
+      opacity:.95;
+    }
+    .promo-strip strong{
+      font-weight:600;
+    }
+    .promo-btn{
+      min-width:220px;
+      margin-top:.2rem;
+    }
+
+    /* PARA QUIÉN */
+    .who-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.4rem;
+    }
+    .pill-card{
+      background:rgba(255,255,255,.6);
+      border-radius:18px;
+      padding:1.1rem 1.1rem;
+      border:1px solid rgba(0,0,0,.03);
+      font-size:.86rem;
+    }
+    .pill-title{
+      font-weight:600;
+      margin-bottom:.4rem;
+      color:var(--verde-bosque);
+    }
+
+    /* DIFERENCIALES */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.65rem;
+      margin-top:1rem;
+    }
+    .chip{
+      padding:.4rem .9rem;
+      border-radius:999px;
+      border:1px solid rgba(47,107,87,.25);
+      font-size:.78rem;
+      background:#fff;
+      color:var(--verde-bosque);
+    }
+    .list-check{
+      list-style:none;
+      display:grid;
+      gap:.5rem;
+      font-size:.88rem;
+      margin-top:1rem;
+    }
+    .list-check li{
+      display:flex;
+      gap:.55rem;
+      align-items:flex-start;
+    }
+    .list-check span.icon{
+      margin-top:.15rem;
+      font-size:.9rem;
+      color:var(--verde-savia);
+    }
+
+    /* BLOQUE CREADORAS */
+    .creators-grid{
+      margin-top:2.4rem;
+      display:grid;
+      grid-template-columns:1.1fr 1.3fr;
+      gap:2rem;
+      align-items:center;
+    }
+    .creators-photo-frame{
+      border-radius:24px;
+      padding:.45rem;
+      background:linear-gradient(135deg,rgba(167,227,207,.9),rgba(255,207,174,.9));
+      box-shadow:var(--shadow-soft);
+    }
+    .creators-photo-frame img{
+      border-radius:20px;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .creators-title{
+      font-size:1.25rem;
+      margin-bottom:.5rem;
+      color:var(--negro);
+    }
+    .creators-intro{
+      font-size:.9rem;
+      color:var(--gris);
+      margin-bottom:1rem;
+    }
+    .creators-people{
+      display:grid;
+      gap:.7rem;
+    }
+    .creator h4{
+      font-size:.95rem;
+      margin-bottom:.2rem;
+      color:var(--verde-bosque);
+    }
+    .creator p{
+      font-size:.86rem;
+      color:var(--texto);
+    }
+
+    /* PASOS */
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.4rem;
+    }
+    .step{
+      background:#fff;
+      border-radius:20px;
+      padding:1.2rem 1.1rem 1.3rem;
+      font-size:.88rem;
+      box-shadow:0 12px 32px rgba(0,0,0,.04);
+    }
+    .step-number{
+      width:32px;height:32px;
+      border-radius:999px;
+      border:1px solid rgba(75,175,140,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.85rem;
+      font-weight:600;
+      color:var(--verde-bosque);
+      margin-bottom:.7rem;
+      background:rgba(167,227,207,.15);
+    }
+    .step h3{
+      font-size:.98rem;
+      margin-bottom:.4rem;
+      color:var(--negro);
+    }
+
+    /* CTA FINAL & FORM */
+    .cta-section{
+      background:var(--verde-bosque);
+      color:#fff;
+      border-radius:26px;
+      padding:2.3rem 2rem;
+      display:grid;
+      grid-template-columns:1.2fr 1.1fr;
+      gap:2rem;
+      align-items:center;
+      box-shadow:0 24px 60px rgba(9,32,26,.55);
+    }
+    .cta-section h2{
+      font-size:1.8rem;
+      margin-bottom:.65rem;
+    }
+    .cta-section p{
+      font-size:.95rem;
+      color:rgba(255,255,255,.85);
+      margin-bottom:1rem;
+    }
+    .cta-highlight{
+      display:inline-flex;
+      align-items:center;
+      padding:.3rem .8rem;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      font-size:.78rem;
+      margin-bottom:.75rem;
+    }
+    .cta-subpoints{
+      list-style:none;
+      font-size:.86rem;
+      display:grid;
+      gap:.35rem;
+      margin-bottom:1.1rem;
+      color:rgba(255,255,255,.9);
+    }
+    .cta-subpoints li::before{
+      content:"✓ ";
+      color:var(--durazno);
+      font-weight:600;
+    }
+
+    .cta-form{
+      background:#fff;
+      color:var(--texto);
+      border-radius:22px;
+      padding:1.5rem 1.5rem 1.4rem;
+    }
+    .cta-form h3{
+      font-size:1rem;
+      margin-bottom:.4rem;
+      color:var(--verde-bosque);
+    }
+    .cta-form p{
+      font-size:.8rem;
+      color:var(--gris);
+      margin-bottom:1rem;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:.25rem;
+      margin-bottom:.75rem;
+      font-size:.8rem;
+    }
+    .field label{
+      color:var(--gris);
+    }
+    .field input,
+    .field select,
+    .field textarea{
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.08);
+      padding:.6rem .8rem;
+      font-size:.84rem;
+      font-family:inherit;
+      outline:none;
+      background:rgba(245,241,234,.55);
+      transition:.18s;
+    }
+    .field textarea{
+      border-radius:16px;
+      min-height:80px;
+      resize:vertical;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      border-color:rgba(75,175,140,.9);
+      box-shadow:0 0 0 1px rgba(75,175,140,.5);
+      background:#fff;
+    }
+    .form-footnote{
+      font-size:.72rem;
+      color:var(--gris);
+      margin-top:.5rem;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:2.1rem 0 1.2rem;
+      font-size:.78rem;
+      color:var(--gris);
+    }
+    .footer-top{
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(0,0,0,.05);
+      padding-top:1.1rem;
+      margin-bottom:.75rem;
+    }
+    .footer-left{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .footer-logo{
+      height:26px;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+    }
+    .footer-links a{
+      color:var(--gris);
+    }
+
+    /* ANIMACIONES */
+    .fade-in{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .6s ease-out, transform .6s ease-out;
+    }
+    .fade-in.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float{
+      position:fixed;
+      right:1.4rem;
+      bottom:1.4rem;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:var(--verde-savia);
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:80;
+      transition:transform .18s ease-out, box-shadow .18s ease-out;
+    }
+    .whatsapp-float:hover{
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:0 22px 46px rgba(0,0,0,.45);
+    }
+    .whatsapp-float svg{
+      width:28px;
+      height:28px;
+      display:block;
+      fill:#fff;
+    }
+
+    /* POPUP PROMO PLANES (ambos) */
+    .promo-modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease-out;
+      z-index:90;
+    }
+    .promo-modal-backdrop.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+    .promo-modal{
+      background:#fff;
+      border-radius:24px;
+      padding:1.7rem 1.9rem 1.5rem;
+      width:min(420px,92%);
+      box-shadow:0 22px 55px rgba(0,0,0,.45);
+      position:relative;
+    }
+    .promo-modal-tag{
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      color:var(--verde-bosque);
+      margin-bottom:.4rem;
+    }
+    .promo-modal h3{
+      font-size:1.1rem;
+      margin-bottom:.45rem;
+      color:var(--negro);
+    }
+    .promo-modal p{
+      font-size:.86rem;
+      color:var(--gris);
+      margin-bottom:.9rem;
+    }
+    .promo-close{
+      position:absolute;
+      top:.55rem;
+      right:.75rem;
+      border:none;
+      background:transparent;
+      font-size:1.1rem;
+      cursor:pointer;
+      color:var(--gris);
+    }
+    .promo-modal small{
+      font-size:.72rem;
+      color:var(--gris);
+      display:block;
+      margin-top:.45rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .hero-grid,
+      .grid-2,
+      .cta-section,
+      .creators-grid{
+        grid-template-columns:1fr;
+      }
+      .hero{
+        padding:2.4rem 0 2.1rem;
+      }
+      .cta-section{
+        padding:1.9rem 1.5rem;
+      }
+    }
+
+    @media (max-width:768px){
+      .nav-links{
+        position:absolute;
+        inset:56px 1.25rem auto 1.25rem;
+        background:rgba(245,241,234,.98);
+        border-radius:18px;
+        padding:.8rem .9rem;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:.5rem;
+        box-shadow:0 16px 40px rgba(0,0,0,.12);
+        transform:translateY(-16px);
+        opacity:0;
+        pointer-events:none;
+        transition:.2s ease-out;
+      }
+      .nav-links.open{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .nav-toggle{
+        display:block;
+      }
+      .cards{
+        grid-template-columns:1fr;
+      }
+      .who-grid{
+        grid-template-columns:1fr;
+      }
+      .steps{
+        grid-template-columns:1fr;
+      }
+      .hero-title{
+        font-size:2.05rem;
+      }
+      .hero-sub{
+        font-size:1.15rem;
+      }
+      .section-title{
+        font-size:1.55rem;
+      }
+      .cta-section h2{
+        font-size:1.5rem;
+      }
+      .whatsapp-float{
+        width:54px;
+        height:54px;
+        right:1.1rem;
+        bottom:1.1rem;
+      }
+      .promo-strip{
+        align-items:center;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="nav-left">
+        <img src="img/logo_transparent_background.png" alt="Logo Savia" class="nav-logo">
+        <div class="nav-brand">
+          <span>SAVIA</span>
+          <span>Tu agenda más simple</span>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="#que-es">Qué es Savia</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#como-funciona">Cómo trabajamos</a>
+        <a href="#demo">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-left fade-in">
+          <div class="eyebrow">Software & programación para emprendedoras</div>
+          <h1 class="hero-title">
+            Savia organiza tu tiempo,
+            <span class="accent">y nosotros hacemos crecer tu negocio.</span>
+          </h1>
+          <p class="hero-sub">
+            Agenda, turnos, clientes y también páginas web, landings, apps y sistemas internos hechos a medida.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Turnero online + recordatorios + reportes
+            </div>
+          <div class="badge">
+              <span class="badge-dot"></span>
+              Agendas profesionales 
+            </div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Webs, landings y micrositios
+            </div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Apps, sistemas internos y automatizaciones
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#demo" class="btn btn-primary">Quiero organizar mi agenda</a>
+            <a href="https://wa.me/5492613387305" target="_blank" class="btn btn-outline">
+              Escribime por WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span class="hero-note-dot"></span>
+            <span>Ideal para estéticas, peluquerías, spas, consultorios y emprendedoras que quieren crecer.</span>
+          </div>
+        </div>
+
+        <aside class="hero-card fade-in">
+          <div class="hero-card-header">
+            <img src="img/dark_logo_transparent_background.png" alt="Isotipo Savia" class="hero-logo-mark">
+            <span class="hero-pill">Panel diario · Vista móvil primero</span>
+          </div>
+          <h2>Tu día en orden, en pocos clics</h2>
+          <p>
+            Visualizá tus turnos, huecos libres, ingresos estimados y mensajes pendientes.
+            Todo conectado con tus webs, landings y automatizaciones.
+          </p>
+
+          <ul class="hero-card-list">
+            <li>Turnos online 24/7</li>
+            <li>Recordatorios automáticos</li>
+            <li>Historial de clientas</li>
+            <li>Notas y preferencias</li>
+            <li>Alertas de no-shows</li>
+            <li>Reportes simples del mes</li>
+          </ul>
+
+          <a href="https://namilo1315.github.io/turnosonline/index.html" target="_blank">
+            <button class="btn btn-primary" style="width:100%;margin-top:.35rem;">
+              Ver cómo se vería mi agenda
+            </button>
+          </a>
+          <div class="hero-mini-label">Sin compromiso · Configuración acompañada</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- QUÉ ES SAVIA -->
+    <section id="que-es">
+      <div class="container grid-2">
+        <div class="fade-in">
+          <div class="section-header" style="text-align:left;margin-bottom:1.6rem;">
+            <div class="section-eyebrow">Qué es Savia</div>
+            <h2 class="section-title">Gestión pensada para tu día a día</h2>
+            <p class="section-sub">
+              Savia es un software de gestión diseñado para emprendedoras reales:
+              estéticas, peluquerías y profesionales del bienestar que necesitan
+              orden, claridad y tiempo para vivir su negocio sin agobio.
+            </p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-tag">Tech + wellness + minimalismo estético</div>
+            <h3>Una herramienta simple, cálida y profesional</h3>
+            <p>
+              Nada de pantallas frías ni términos técnicos raros.
+              Savia habla tu idioma y se adapta a tu forma de trabajar.
+            </p>
+            <ul class="highlight-list">
+              <li>Interfaz móvil, clara y estética.</li>
+              <li>Todo organizado: turnos, clientas, servicios y pagos.</li>
+              <li>Automatizaciones que ahorran horas de WhatsApp.</li>
+              <li>Reportes visuales para tomar decisiones con calma.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <div class="highlight-card" style="margin-bottom:1rem;">
+            <h3>Más que un turnero: programación a tu medida</h3>
+            <p>
+              Detrás de Savia hay una desarrolladora que crea soluciones
+              digitales pensadas para tu marca: desde páginas web y landings,
+              hasta sistemas internos y apps para tu equipo.
+            </p>
+            <ul class="highlight-list">
+              <li>Turneros personalizados por sucursal o profesional.</li>
+              <li>Páginas web y landings conectadas con tu sistema.</li>
+              <li>Micrositios para lanzamientos, promos y eventos.</li>
+              <li>Apps y módulos a medida según lo que tu negocio necesite.</li>
+            </ul>
+          </div>
+
+          <div class="chips">
+            <span class="chip">Agenda + turnos</span>
+            <span class="chip">Webs & landings</span>
+            <span class="chip">Apps & sistemas internos</span>
+            <span class="chip">Automatizaciones</span>
+            <span class="chip">Reportes claros</span>
+            <span class="chip">Y lo que quieras!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Qué podemos hacer juntas</div>
+          <h2 class="section-title">Servicios Savia</h2>
+          <p class="section-sub">
+            Podés elegir solo el software, solo desarrollo web o el combo completo con sistemas internos y apps.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card fade-in">
+            <div class="card-icon">📅</div>
+            <h3>Turnero inteligente</h3>
+            <span class="small">Agenda online + recordatorios</span>
+            <ul>
+              <li>Turnos 24/7 desde link o QR.</li>
+              <li>Recordatorios automáticos por WhatsApp.</li>
+              <li>Múltiples profesionales y servicios.</li>
+              <li>Bloqueos por feriados, vacaciones o eventos.</li>
+            </ul>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card-icon">🌐</div>
+            <h3>Webs, landings & micrositios</h3>
+            <span class="small">Presencia online alineada con tu marca</span>
+            <ul>
+              <li>Landing principal para turnos y servicios.</li>
+              <li>Micrositios para campañas, promos y talleres.</li>
+              <li>Textos y diseño en la estética Savia.</li>
+              <li>Integración con formularios, pagos y tu software.</li>
+            </ul>
+          </article>
+
+          <article class="card fade-in">
+            <div class="card-icon">⚙️</div>
+            <h3>Apps, programas internos & sistemas</h3>
+            <span class="small">Programación a medida para tu negocio</span>
+            <ul>
+              <li>Sistemas internos de gestión para tu equipo.</li>
+              <li>Apps web para procesos específicos.</li>
+              <li>Automatizaciones con planillas, CRM y más.</li>
+              <li>Soluciones a medida para tu rubro o ciudad.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- BANNER PROMO FIJO -->
+        <div class="promo-strip">
+          <div class="promo">
+            <div class="promo-eyebrow">Lanzamiento Savia · Beneficio de bienvenida</div>
+            <div class="promo-main">
+              <strong>No lo dejes pasar:</strong> elegí tu plan (solo software, software + web o solución a medida)
+              y recibí un incentivo exclusivo por ser de las primeras en sumarse.
+            </div>
+            <div class="promo-detail">
+              Cupos limitados por mes para acompañarte bien. Te cuento todo por WhatsApp y vemos juntas
+              qué versión de Savia se adapta mejor a tu agenda y a tu bolsillo.
+            </div>
+          </div>
+          <a href="https://wa.me/5492613387305?text=Hola%20Savia%20👋%20quiero%20aprovechar%20la%20promo%20de%20planes.%20¿Me%20contás%20qué%20opciones%20tienen%20para%20mi%20negocio%3F"
+             target="_blank"
+             class="btn btn-primary promo-btn">
+            Quiero mi promo por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUIÉN -->
+    <section id="para-quien">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">¿Es para vos?</div>
+          <h2 class="section-title">Savia está pensada para emprendedoras reales</h2>
+          <p class="section-sub">
+            No hace falta ser “mega empresa”. Si tenés agenda, clientas y mil cosas
+            en la cabeza, Savia puede ayudarte.
+          </p>
+        </div>
+
+        <div class="who-grid">
+          <div class="pill-card fade-in">
+            <div class="pill-title">Estéticas & centros de belleza</div>
+            <p>
+              Salones de uñas, pestañas, depilación, skin care,
+              peluquerías y barberías que necesitan ordenar turnos
+              y comunicaciones sin perder la calidez.
+            </p>
+          </div>
+          <div class="pill-card fade-in">
+            <div class="pill-title">Profesionales del bienestar</div>
+            <p>
+              Masajistas, faciales, terapias alternativas, yoga, pilates,
+              consultorios y espacios holísticos que quieren una gestión
+              simple, sin sistemas fríos ni complejos.
+            </p>
+          </div>
+          <div class="pill-card fade-in">
+            <div class="pill-title">Emprendedoras multi-rubro</div>
+            <p>
+              Si das servicios, tenés productos, campañas o sedes
+              distintas, Savia se adapta: armamos módulos y soluciones
+              a medida para tu realidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIALES + CREADORAS -->
+    <section>
+      <div class="container grid-2">
+        <div class="fade-in">
+          <div class="section-header" style="text-align:left;margin-bottom:1.4rem;">
+            <div class="section-eyebrow">Lo que nos hace únicas</div>
+            <h2 class="section-title">Tecnología humana, con programadores de confianza</h2>
+            <p class="section-sub">
+              Savia no es un monstruo corporativo ni una app genérica más.
+              Es una herramienta creada desde la realidad de quien emprende
+              y programa a la vez, con un equipo técnico detrás que cuida cada detalle.
+            </p>
+          </div>
+
+          <ul class="list-check">
+            <li>
+              <span class="icon">✓</span>
+              <span>Lenguaje claro, sin palabritas técnicas que den miedo.</span>
+            </li>
+            <li>
+              <span class="icon">✓</span>
+              <span>Acompañamiento humano en la implementación: te ayudamos a configurarla.</span>
+            </li>
+            <li>
+              <span class="icon">✓</span>
+              <span>Diseño limpio, estético y mobile-first: se ve lindo en tu celu.</span>
+            </li>
+            <li>
+              <span class="icon">✓</span>
+              <span>Posibilidad de sumar módulos, webs, sistemas y programación a medida cuando tu negocio crece.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="fade-in">
+          <div class="highlight-card">
+            <h3>Tu energía en lo que importa</h3>
+            <p>
+              La idea es simple: Savia se ocupa de lo repetitivo,
+              vos ponés tu energía en atender, crear, vender y disfrutar.
+            </p>
+            <ul class="highlight-list">
+              <li>Menos mensajes perdidos, más organización.</li>
+              <li>Menos “¿tenés turno hoy?”, más enlaces claros.</li>
+              <li>Menos miedo a los números, más decisiones con información.</li>
+              <li>Menos agotamiento, más espacio para crecer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE CREADORAS -->
+      <div class="container creators-grid">
+        <div class="creators-photo-frame fade-in">
+          <!-- Cambiá esta imagen por la foto que quieras usar -->
+          <img src="Diseño sin título (2).png" alt="Creadoras de Savia: Natalia López y Erica Bumbalo">
+        </div>
+        <div class="fade-in">
+          <div class="section-eyebrow" style="margin-bottom:.4rem;">Creadoras</div>
+          <h3 class="creators-title">Personas reales detrás de tu sistema</h3>
+          <p class="creators-intro">
+            Savia nace del cruce entre programación, estrategia digital y la vida real de quienes emprenden.
+            No hablás con un chatbot: hablás con mujeres que también gestionan agenda, proyectos y clientes todos los días.
+          </p>
+          <div class="creators-people">
+            <div class="creator">
+              <h4>Natalia López</h4>
+              <p>
+                Desarrolladora full stack y especialista en análisis de datos.
+                Se ocupa de que tu sistema sea sólido, ordenado y pensado para crecer paso a paso,
+                sin perder la simpleza en el uso diario.
+              </p>
+            </div>
+            <div class="creator">
+              <h4>Erica Bumbalo</h4>
+              <p>
+                Comunicadora y manager en marketing digital.
+                Te acompaña a traducir tu esencia de marca en mensajes claros, campañas
+                y contenidos que conectan con tus clientas y potencian tus lanzamientos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como-funciona">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Cómo trabajamos</div>
+          <h2 class="section-title">De tu idea a un sistema vivo</h2>
+          <p class="section-sub">
+            No es solo “instalar un sistema”. Es entender tu forma de trabajar,
+            adaptar Savia y acompañarte en el proceso.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step fade-in">
+            <div class="step-number">1</div>
+            <h3>Nos conocemos</h3>
+            <p>
+              Hablamos por videollamada o WhatsApp.
+              Nos contás cómo trabajás, qué te agota y qué te gustaría automatizar.
+            </p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">2</div>
+            <h3>Diseñamos tu Savia</h3>
+            <p>
+              Configuramos el turnero, armamos flujos de mensajes,
+              definimos servicios, horarios y módulos especiales
+              (landing, micrositio, reportes, apps, sistemas internos, etc.).
+            </p>
+          </div>
+          <div class="step fade-in">
+            <div class="step-number">3</div>
+            <h3>Acompañamiento y ajustes</h3>
+            <p>
+              Probás Savia en tu día a día, vemos qué funciona,
+              ajustamos detalles y dejamos todo listo para que la herramienta
+              crezca con vos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL + FORM -->
+    <section id="demo">
+      <div class="container">
+        <div class="cta-section fade-in">
+          <div>
+            <div class="cta-highlight">Planes & acompañamiento · Sin compromiso</div>
+            <h2>¿Te imaginas tu agenda ordenada y tu parte tech resuelta?</h2>
+            <p>
+              Contame cómo es tu negocio y vemos juntas qué versión de Savia
+              tiene más sentido para vos: solo software, software + web
+              o desarrollo interno/app a medida.
+            </p>
+            <ul class="cta-subpoints">
+              <li>Revisamos tu situación actual y tus objetivos.</li>
+              <li>Te muestro ejemplos reales de automatizaciones y webs.</li>
+              <li>Te propongo un plan claro, con lenguaje humano.</li>
+            </ul>
+            <div class="hero-note" style="color:rgba(255,255,255,.85);margin-top:.4rem;">
+              <span class="hero-note-dot" style="background:var(--durazno);"></span>
+              <span>Atiendo personalmente cada proyecto, no hay robots en el medio.</span>
+            </div>
+          </div>
+
+          <form class="cta-form">
+            <h3>Quiero que me cuentes de los planes</h3>
+            <p>Completá estos datos y podés usar el texto como base para escribirnos por WhatsApp.</p>
+
+            <div class="field">
+              <label for="nombre">Nombre y apellido</label>
+              <input id="nombre" type="text" placeholder="Ej: Lucía Gómez" required>
+            </div>
+
+            <div class="field">
+              <label for="negocio">Nombre de tu emprendimiento</label>
+              <input id="negocio" type="text" placeholder="Ej: Estética Savia Glow">
+            </div>
+
+            <div class="field">
+              <label for="rubro">Rubro principal</label>
+              <select id="rubro">
+                <option value="">Elegí una opción</option>
+                <option>Estética / Belleza</option>
+                <option>Peluquería / Barbería</option>
+                <option>Masajes / Spa / Bienestar</option>
+                <option>Consultorio / Salud</option>
+                <option>Otro servicio</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="whatsapp">WhatsApp de contacto</label>
+              <input id="whatsapp" type="tel" placeholder="Ej: +54 9 261 000 0000">
+            </div>
+
+            <div class="field">
+              <label for="mensaje">Contame brevemente qué estás necesitando</label>
+              <textarea id="mensaje" placeholder="Turnero, web, sistemas internos, apps, etc."></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="whatsapp-form-btn" style="width:100%;margin-top:.35rem;">
+              Enviar consulta por WhatsApp
+            </button>
+            <div class="form-footnote">
+              * Al hacer clic se abre WhatsApp con tu mensaje listo para enviar a Savia.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-left">
+          <img src="img/logo_transparent_background.png" alt="Savia logo" class="footer-logo">
+          <span>Savia · Tu agenda más simple</span>
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#demo">Planes & contacto</a>
+          <a href="https://wa.me/5492613387305" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        © <span id="year"></span> Savia. Desarrollado para emprendedoras - NL - EB.
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/5492613387305" class="whatsapp-float" target="_blank" aria-label="Escribime por WhatsApp">
+    <img src="img/wp.png" alt="" width="35px">
+  </a>
+
+  <!-- POPUP PROMO PLANES 1 -->
+  <div class="promo-modal-backdrop" id="promo-modal-1">
+    <div class="promo-modal">
+      <button class="promo-close" type="button" aria-label="Cerrar">&times;</button>
+      <div class="promo-modal-tag">Oferta limitada</div>
+      <h3>¿Aprovechás la promo de planes Savia?</h3>
+      <p>
+        Te armamos un plan a medida (solo software, software + web o sistemas internos/app)
+        con beneficio de bienvenida. La consulta llega directo por WhatsApp.
+      </p>
+      <button type="button" class="btn btn-primary" id="promo-modal-1-btn" style="width:100%;margin-bottom:.2rem;">
+        Sí, quiero hablar por WhatsApp
+      </button>
+      <small>Podés cerrar este mensaje y seguir navegando si querés decidir más tarde.</small>
+    </div>
+  </div>
+
+  <!-- POPUP PROMO PLANES 2 -->
+  <div class="promo-modal-backdrop" id="promo-modal-2">
+    <div class="promo-modal">
+      <button class="promo-close" type="button" aria-label="Cerrar">&times;</button>
+      <div class="promo-modal-tag">Planes personalizados</div>
+      <h3>¿Te ayudo con tu web, turnero o sistema interno?</h3>
+      <p>
+        Podemos combinar Savia con una landing, una web completa o un sistema interno
+        para tu equipo. Contame tu idea y te propongo un plan claro por WhatsApp.
+      </p>
+      <button type="button" class="btn btn-primary" id="promo-modal-2-btn" style="width:100%;margin-bottom:.2rem;">
+        Sí, quiero contar mi idea
+      </button>
+      <small>Este es solo un recordatorio amable. Si ya nos escribiste, podés cerrarlo.</small>
+    </div>
+  </div>
+
+  <script>
+    // Año actual
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú mobile + activo en header
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.querySelector('.nav-links');
+    const navLinkItems = navLinks.querySelectorAll('a[href^="#"]');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    });
+
+    // Cerrar menú al hacer clic en un enlace + marcar activo
+    navLinkItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+
+        navLinkItems.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Animaciones de aparición
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Popup de promo de planes - 2 etapas
+    const promoModal1      = document.getElementById('promo-modal-1');
+    const promoModal2      = document.getElementById('promo-modal-2');
+    const promoModal1Btn   = document.getElementById('promo-modal-1-btn');
+    const promoModal2Btn   = document.getElementById('promo-modal-2-btn');
+    const promoModal1Close = promoModal1.querySelector('.promo-close');
+    const promoModal2Close = promoModal2.querySelector('.promo-close');
+
+    let promo1Shown      = false;
+    let promo2Scheduled  = false;
+    let promo2Shown      = false;
+
+    function openPromo1(){
+      if(promo1Shown) return;
+      promo1Shown = true;
+      promoModal1.classList.add('open');
+    }
+
+    function openPromo2(){
+      if(promo2Shown) return;
+      promo2Shown = true;
+      promoModal2.classList.add('open');
+    }
+
+    function schedulePromo2(){
+      if(promo2Scheduled) return;
+      promo2Scheduled = true;
+      setTimeout(openPromo2, 15000); // 15 segundos después de cerrar el primero
+    }
+
+    // Mostrar el primer popup al hacer un poco de scroll
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400){
+        openPromo1();
+      }
+    });
+
+    // Cerrar y programar el segundo popup (primer modal)
+    promoModal1Close.addEventListener('click', () => {
+      promoModal1.classList.remove('open');
+      schedulePromo2();
+    });
+
+    promoModal1.addEventListener('click', (e) => {
+      if(e.target === promoModal1){
+        promoModal1.classList.remove('open');
+        schedulePromo2();
+      }
+    });
+
+    promoModal1Btn.addEventListener('click', () => {
+      const text = encodeURIComponent("Hola Savia 👋 quiero aprovechar la promo de planes. ¿Me contás qué opciones tienen para mi negocio?");
+      window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
+      promoModal1.classList.remove('open');
+      schedulePromo2();
+    });
+
+    // Cerrar segundo popup
+    promoModal2Close.addEventListener('click', () => {
+      promoModal2.classList.remove('open');
+    });
+
+    promoModal2.addEventListener('click', (e) => {
+      if(e.target === promoModal2){
+        promoModal2.classList.remove('open');
+      }
+    });
+
+    promoModal2Btn.addEventListener('click', () => {
+      const text = encodeURIComponent("Hola Savia 👋 quiero contarte mi idea (web, turnero, sistema interno o app) y ver qué plan me recomendás.");
+      window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
+      promoModal2.classList.remove('open');
+    });
+
+    // Botón del formulario -> WhatsApp
+    const whatsappFormBtn = document.getElementById('whatsapp-form-btn');
+    whatsappFormBtn.addEventListener('click', () => {
+      const nombre   = document.getElementById('nombre').value.trim();
+      const negocio  = document.getElementById('negocio').value.trim();
+      const rubro    = document.getElementById('rubro').value;
+      const tel      = document.getElementById('whatsapp').value.trim();
+      const mensaje  = document.getElementById('mensaje').value.trim();
+
+      let text = "Hola Savia 👋%0A%0A";
+      if(nombre)  text += `Soy *${nombre}*.%0A`;
+      if(negocio) text += `Emprendimiento: ${negocio}.%0A`;
+      if(rubro)   text += `Rubro: ${rubro}.%0A`;
+      if(tel)     text += `WhatsApp de contacto: ${tel}.%0A`;
+      if(mensaje){
+        text += `%0AEsto es lo que estoy necesitando:%0A${mensaje}%0A`;
+      }
+      text += "%0AMe gustaría que me cuentes qué plan y beneficio me recomendás.";
+
+      window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
+    });
+  </script>
+</body>
+</html>
