@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -402,13 +402,14 @@
       pointer-events:none;
     }
     .card-icon{
-      width:30px;height:30px;
+      width:30px;
+      height:30px;
       border-radius:12px;
       background:rgba(75,175,140,.08);
       display:flex;
       align-items:center;
       justify-content:center;
-      margin-bottom:.8rem;
+      margin:0 auto .8rem auto; /* CENTRADO EN TODAS LAS CARDS */
       font-size:1rem;
       color:var(--verde-bosque);
     }
@@ -435,24 +436,25 @@
       font-weight:600;
     }
 
-    /* BANNER PROMO FIJO */
+    /* BANNER PROMO FIJO (SERVICIOS) */
     .promo-strip{
       margin:2.3rem auto 0;
       background:linear-gradient(135deg,var(--verde-savia),var(--verde-bosque));
       color:#fff;
       border-radius:22px;
-      padding:1.3rem 1.7rem 1.4rem;
+      padding:1.3rem 1.9rem 1.4rem;
       display:flex;
-      flex-direction:column;
+      flex-direction:row;
       align-items:center;
-      justify-content:center;
-      gap:.6rem;
+      justify-content:space-between;
+      gap:1.4rem;
       box-shadow:0 16px 40px rgba(9,32,26,.4);
       font-size:.9rem;
-      text-align:center;
+      text-align:left; /* menos centrado, texto más extendido */
     }
-    .promo-text{
-      max-width:640px;
+    .promo{
+      max-width:none;
+      width:100%;
     }
     .promo-eyebrow{
       font-size:.72rem;
@@ -475,6 +477,13 @@
     .promo-btn{
       min-width:220px;
       margin-top:.2rem;
+      flex-shrink:0;
+    }
+
+    /* BLOQUE PAQUETES: íconos centrados (refuerza) */
+    .packages-block .card-icon{
+      margin:0 auto .85rem auto;
+      font-size:1.4rem;
     }
 
     /* PARA QUIÉN */
@@ -527,6 +536,44 @@
       margin-top:.15rem;
       font-size:.9rem;
       color:var(--verde-savia);
+    }
+
+    /* CARTEL FIJO EXTRA DE PUBLICIDAD (VERDE COMO EL OTRO) */
+    .promo-strip-secondary{
+      margin:0 auto 2.4rem;
+      background:linear-gradient(135deg,var(--verde-savia),var(--verde-bosque));
+      border-radius:22px;
+      padding:1.2rem 1.6rem;
+      display:flex;
+      align-items:center;
+      gap:1.2rem;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+      font-size:.9rem;
+      color:#fff;
+    }
+    .promo-strip-secondary-logo{
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:rgba(255,255,255,.16);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+    .promo-strip-secondary-logo img{
+      width:38px;
+      height:auto;
+    }
+    .promo-strip-secondary-text strong{
+      color:#fff;
+      display:block;
+      margin-bottom:.25rem;
+    }
+    .promo-strip-secondary-text p{
+      margin:0;
+      color:rgba(255,255,255,.92);
+      font-size:.86rem;
     }
 
     /* BLOQUE CREADORAS */
@@ -768,11 +815,10 @@
       transform:translateY(-2px) scale(1.03);
       box-shadow:0 22px 46px rgba(0,0,0,.45);
     }
-    .whatsapp-float svg{
+    .whatsapp-float img{
+      display:block;
       width:28px;
       height:28px;
-      display:block;
-      fill:#fff;
     }
 
     /* POPUP PROMO PLANES (ambos) */
@@ -815,7 +861,7 @@
     .promo-modal p{
       font-size:.86rem;
       color:var(--gris);
-      margin-bottom:.9rem;
+      margin-bottom:.7rem;
     }
     .promo-close{
       position:absolute;
@@ -902,7 +948,15 @@
         bottom:1.1rem;
       }
       .promo-strip{
+        flex-direction:column;
         align-items:center;
+        text-align:center;
+      }
+      .promo-btn{
+        width:100%;
+      }
+      .promo-strip-secondary{
+        flex-direction:column;
         text-align:center;
       }
     }
@@ -952,9 +1006,9 @@
               <span class="badge-dot"></span>
               Turnero online + recordatorios + reportes
             </div>
-          <div class="badge">
+            <div class="badge">
               <span class="badge-dot"></span>
-              Agendas profesionales 
+              Agendas profesionales
             </div>
             <div class="badge">
               <span class="badge-dot"></span>
@@ -1045,7 +1099,8 @@
             <p>
               Detrás de Savia hay una desarrolladora que crea soluciones
               digitales pensadas para tu marca: desde páginas web y landings,
-              hasta sistemas internos y apps para tu equipo.
+              hasta sistemas internos y apps para tu equipo. Lo que hoy tenés
+              “en la cabeza”, nosotras lo traducimos a una solución digital concreta.
             </p>
             <ul class="highlight-list">
               <li>Turneros personalizados por sucursal o profesional.</li>
@@ -1119,14 +1174,16 @@
         <!-- BANNER PROMO FIJO -->
         <div class="promo-strip">
           <div class="promo">
-            <div class="promo-eyebrow">Lanzamiento Savia · Beneficio de bienvenida</div>
+            <div class="promo-eyebrow">Agenda desordenada · Lanzamiento Savia</div>
             <div class="promo-main">
-              <strong>No lo dejes pasar:</strong> elegí tu plan (solo software, software + web o solución a medida)
-              y recibí un incentivo exclusivo por ser de las primeras en sumarse.
+              <strong>Si hoy hacés todo por WhatsApp y papelitos, no lo dejes pasar.</strong>
+              Savia ordena turnos, mensajes e historial de clientas en un solo lugar,
+              sin perder la calidez con la que atendés todos los días.
             </div>
             <div class="promo-detail">
-              Cupos limitados por mes para acompañarte bien. Te cuento todo por WhatsApp y vemos juntas
-              qué versión de Savia se adapta mejor a tu agenda y a tu bolsillo.
+              Tenemos 3 paquetes pensados para emprendedoras reales:
+              Pack Web Esencial, Pack Estrategia + Web y Pack Sistema de Turnos / Mini CRM.
+              Aprovechá los descuentos de lanzamiento y elegí el que mejor se adapte a tu momento.
             </div>
           </div>
           <a href="https://wa.me/5492613387305?text=Hola%20Savia%20👋%20quiero%20aprovechar%20la%20promo%20de%20planes.%20¿Me%20contás%20qué%20opciones%20tienen%20para%20mi%20negocio%3F"
@@ -1134,6 +1191,121 @@
              class="btn btn-primary promo-btn">
             Quiero mi promo por WhatsApp
           </a>
+        </div>
+
+        <!-- PAQUETES SAVIA -->
+        <div class="packages-block">
+          <div class="section-header" style="margin-top:2.8rem;margin-bottom:1.8rem;">
+            <div class="section-eyebrow">Paquetes Savia</div>
+            <h2 class="section-title">Elegí por dónde empezar a ordenar</h2>
+            <p class="section-sub">
+              Podés arrancar por tu sitio web, por tu agenda o por ambos.
+              Los paquetes se pueden combinar y escalar cuando tu negocio crece.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card fade-in">
+              <div class="card-icon">💻</div>
+              <h3>Pack Web Esencial</h3>
+              <span class="small">Tu casa digital en orden</span>
+              <ul>
+                <li>Landing o web sencilla con tus servicios y datos clave.</li>
+                <li>Botones claros hacia turnos y WhatsApp.</li>
+                <li>Sitio pensado para celular, fácil de navegar.</li>
+                <li>Textos adaptados a tu tono y tu marca.</li>
+              </ul>
+            </article>
+
+            <article class="card fade-in">
+              <div class="card-icon">📣</div>
+              <h3>Pack Estrategia + Web</h3>
+              <span class="small">Marketing + sitio alineado</span>
+              <ul>
+                <li>Todo lo del Pack Web Esencial.</li>
+                <li>Mensajes clave para redes y promos.</li>
+                <li>Estructura de contenidos para vender mejor.</li>
+                <li>Acompañamiento para lanzar o relanzar tu marca.</li>
+              </ul>
+            </article>
+
+            <article class="card fade-in">
+              <div class="card-icon">🧩</div>
+              <h3>Pack Sistema de Turnos / Mini CRM</h3>
+              <span class="small">Tu agenda ordenada en serio</span>
+              <ul>
+                <li>Turnos simples y agenda semanal.</li>
+                <li>Ficha de clienta e historial básico.</li>
+                <li>Integración con WhatsApp para recordatorios.</li>
+                <li>Estadísticas básicas para ver cómo va el mes.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIÓN + PROBLEMA + INSIGHT -->
+    <section>
+      <div class="container grid-2">
+        <div class="fade-in">
+          <div class="section-eyebrow">Visión compartida</div>
+          <h2 class="section-title" style="text-align:left;">
+            Tecnología + marketing accesible para emprendedoras reales
+          </h2>
+          <p class="section-sub" style="text-align:left;">
+            Nuestro foco es que puedas tener herramientas digitales (software, webs y sistemas)
+            que sientas propias: humanas, claras, posibles. Sin necesitar “saber de tecnología”
+            ni hablar un idioma raro.
+          </p>
+
+          <div class="highlight-card" style="margin-top:1.5rem;">
+            <h3>Nuestros valores</h3>
+            <ul class="highlight-list">
+              <li>Inclusión digital: que puedas usar tu sistema sin ser experta en computación.</li>
+              <li>Simplicidad tecnológica: lo justo y necesario, sin pantallas llenas de cosas.</li>
+              <li>Calidez humana: acompañamiento real, sin respuestas automáticas frías.</li>
+              <li>Propósito social: facilitar el trabajo de mujeres que sostienen negocios y familias.</li>
+              <li>Innovación accesible: soluciones modernas, pero a escala emprendedora.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <div class="highlight-card">
+            <h3>Del caos de WhatsApp a un sistema que te acompaña</h3>
+            <p>
+              Hoy muchas emprendedoras hacen todo solas: turnos, reagendamientos,
+              atención, cobros, redes. Eso agota, ocupa todo el día y frena el crecimiento.
+            </p>
+            <p><strong>Savia se convierte en:</strong></p>
+            <ul class="highlight-list">
+              <li>Un liberador de tiempo: menos horas contestando mensajes.</li>
+              <li>Un puente al crecimiento: agenda ordenada para animarte a escalar.</li>
+              <li>Un soporte invisible que ordena tu negocio por detrás.</li>
+            </ul>
+
+            <p style="margin-top:.8rem;"><strong>Problema principal que resolvemos:</strong></p>
+            <p>
+              Gestión eficiente de turnos, mensajes e historial de clientes, para que
+              puedas enfocarte en escalar tu negocio y no en contestar WhatsApp todo el día.
+            </p>
+
+            <p style="margin-top:.8rem;">
+              Dolor típico: proyección de turnos poco clara, huecos en la agenda,
+              caos cuando reprograman, falta de respuesta rápida, información dispersa
+              y ventas que se pierden por no responder a tiempo.
+            </p>
+
+            <p style="margin-top:.8rem;"><strong>Mini CRM Savia – MVP incluido:</strong></p>
+            <ul class="highlight-list">
+              <li>Turnos simples y agenda semanal clara.</li>
+              <li>Ficha de cliente con datos clave y notas.</li>
+              <li>Estadísticas básicas para ver cómo viene el mes.</li>
+              <li>Integración con WhatsApp para recordatorios y enlaces de reserva.</li>
+              <li>Interfaz móvil optimizada, pensada para usar desde tu celu.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -1178,6 +1350,22 @@
         </div>
       </div>
     </section>
+
+    <!-- CARTEL FIJO EXTRA DE PUBLICIDAD -->
+    <div class="container">
+      <div class="promo-strip-secondary fade-in">
+        <div class="promo-strip-secondary-logo">
+          <img src="img/logoblanco.png" alt="Logo Savia">
+        </div>
+        <div class="promo-strip-secondary-text">
+          <strong>APROVECHÁ ESTA OPORTUNIDAD Y HACÉ CRECER TU NEGOCIO.</strong>
+          <p>
+            Diseñamos piezas, mini landings, micrositios y materiales de campaña alineados con tu sistema Savia:
+            promos, lanzamientos, formularios, páginas de venta y más. Vos pensás la idea, nosotras la llevamos a digital.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- DIFERENCIALES + CREADORAS -->
     <section>
@@ -1241,7 +1429,8 @@
           <h3 class="creators-title">Personas reales detrás de tu sistema</h3>
           <p class="creators-intro">
             Savia nace del cruce entre programación, estrategia digital y la vida real de quienes emprenden.
-            No hablás con un chatbot: hablás con mujeres que también gestionan agenda, proyectos y clientes todos los días.
+            No hablás con un chatbot: hablás con mujeres que también gestionan agenda, proyectos
+            y clientes todos los días.
           </p>
           <div class="creators-people">
             <div class="creator">
@@ -1313,8 +1502,10 @@
       <div class="container">
         <div class="cta-section fade-in">
           <div>
+            <!-- LOGO BLANCO ARRIBA DEL CARTEL -->
+            
             <div class="cta-highlight">Planes & acompañamiento · Sin compromiso</div>
-            <h2>¿Te imaginas tu agenda ordenada y tu parte tech resuelta?</h2>
+            <h2>¿Te imaginás tu agenda ordenada y tu parte tech resuelta?</h2>
             <p>
               Contame cómo es tu negocio y vemos juntas qué versión de Savia
               tiene más sentido para vos: solo software, software + web
@@ -1402,18 +1593,23 @@
 
   <!-- BOTÓN FLOTANTE WHATSAPP -->
   <a href="https://wa.me/5492613387305" class="whatsapp-float" target="_blank" aria-label="Escribime por WhatsApp">
-    <img src="img/wp.png" alt="" width="35px">
+    <img src="img/wp.png" alt="WhatsApp">
   </a>
 
   <!-- POPUP PROMO PLANES 1 -->
   <div class="promo-modal-backdrop" id="promo-modal-1">
     <div class="promo-modal">
       <button class="promo-close" type="button" aria-label="Cerrar">&times;</button>
-      <div class="promo-modal-tag">Oferta limitada</div>
-      <h3>¿Aprovechás la promo de planes Savia?</h3>
+      <div class="promo-modal-tag">Oferta limitada · Descuentos</div>
+      <h3>¿Aprovechás los descuentos de lanzamiento Savia?</h3>
       <p>
         Te armamos un plan a medida (solo software, software + web o sistemas internos/app)
-        con beneficio de bienvenida. La consulta llega directo por WhatsApp.
+        con beneficio de bienvenida para que ordenes tu agenda sin agobio.
+      </p>
+      <p>
+        Aprovechá los descuentos en Pack Web Esencial, Pack Estrategia + Web
+        y Pack Sistema de Turnos / Mini CRM. Vos nos contás tu realidad,
+        nosotras te sugerimos el pack ideal.
       </p>
       <button type="button" class="btn btn-primary" id="promo-modal-1-btn" style="width:100%;margin-bottom:.2rem;">
         Sí, quiero hablar por WhatsApp
@@ -1426,11 +1622,15 @@
   <div class="promo-modal-backdrop" id="promo-modal-2">
     <div class="promo-modal">
       <button class="promo-close" type="button" aria-label="Cerrar">&times;</button>
-      <div class="promo-modal-tag">Planes personalizados</div>
+      <div class="promo-modal-tag">Planes personalizados · Descuentos</div>
       <h3>¿Te ayudo con tu web, turnero o sistema interno?</h3>
       <p>
         Podemos combinar Savia con una landing, una web completa o un sistema interno
-        para tu equipo. Contame tu idea y te propongo un plan claro por WhatsApp.
+        para tu equipo, con promos especiales de lanzamiento.
+      </p>
+      <p>
+        Aprovechá los descuentos en desarrollo web + turnero y en soluciones internas
+        (mini CRM, apps, paneles). Pensamos juntas qué arma mejor tu “pack Savia”.
       </p>
       <button type="button" class="btn btn-primary" id="promo-modal-2-btn" style="width:100%;margin-bottom:.2rem;">
         Sí, quiero contar mi idea
@@ -1443,7 +1643,7 @@
     // Año actual
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Menú mobile + activo en header
+    // Menú mobile + enlaces
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks  = document.querySelector('.nav-links');
     const navLinkItems = navLinks.querySelectorAll('a[href^="#"]');
@@ -1453,16 +1653,47 @@
       navToggle.classList.toggle('open');
     });
 
-    // Cerrar menú al hacer clic en un enlace + marcar activo
+    // Cerrar menú al hacer clic en un enlace
     navLinkItems.forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
         navToggle.classList.remove('open');
-
-        navLinkItems.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
       });
     });
+
+    // Secciones para marcar activo en el header
+    const sections = document.querySelectorAll('main section[id]');
+    const sectionMap = {};
+
+    navLinkItems.forEach(link => {
+      const href = link.getAttribute('href');
+      if(href && href.startsWith('#')){
+        const id = href.slice(1);
+        sectionMap[id] = link;
+      }
+    });
+
+    function setActiveLink(){
+      let currentId = null;
+      const scrollPos = window.scrollY + 130; // compensa el header
+
+      sections.forEach(section => {
+        if(section.offsetTop <= scrollPos){
+          currentId = section.id;
+        }
+      });
+
+      if(currentId){
+        navLinkItems.forEach(link => link.classList.remove('active'));
+        const activeLink = sectionMap[currentId];
+        if(activeLink){
+          activeLink.classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
 
     // Animaciones de aparición
     const observer = new IntersectionObserver(entries => {
@@ -1527,7 +1758,7 @@
     });
 
     promoModal1Btn.addEventListener('click', () => {
-      const text = encodeURIComponent("Hola Savia 👋 quiero aprovechar la promo de planes. ¿Me contás qué opciones tienen para mi negocio?");
+      const text = encodeURIComponent("Hola Savia 👋 quiero aprovechar la promo de planes y descuentos. ¿Me contás qué opciones tienen para mi negocio?");
       window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
       promoModal1.classList.remove('open');
       schedulePromo2();
@@ -1545,7 +1776,7 @@
     });
 
     promoModal2Btn.addEventListener('click', () => {
-      const text = encodeURIComponent("Hola Savia 👋 quiero contarte mi idea (web, turnero, sistema interno o app) y ver qué plan me recomendás.");
+      const text = encodeURIComponent("Hola Savia 👋 quiero contarte mi idea (web, turnero, sistema interno o app) y ver qué pack con descuento me recomendás.");
       window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
       promoModal2.classList.remove('open');
     });
@@ -1567,7 +1798,7 @@
       if(mensaje){
         text += `%0AEsto es lo que estoy necesitando:%0A${mensaje}%0A`;
       }
-      text += "%0AMe gustaría que me cuentes qué plan y beneficio me recomendás.";
+      text += "%0AMe gustaría que me cuentes qué plan y beneficio con descuento me recomendás.";
 
       window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
     });
