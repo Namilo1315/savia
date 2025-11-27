@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Savia – Software & programación para emprendedoras</title>
-  <meta name="logo_transparent_background" content="width=device-width, initial-scale=1" />
+  <!-- VIEWPORT CORRECTO PARA MODO CELULAR -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Savia organiza tu tiempo y potencia tu marca: turnos online, agenda inteligente, páginas web, landings, apps y sistemas de programación a medida para estéticas y emprendedoras." />
-<link rel="icon" type="image/png" href="img/logo_transparent_background.png">
+  <link rel="icon" type="image/png" href="img/logo_transparent_background.png">
+
   <!-- Tipografías de marca -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -1503,7 +1505,8 @@
         <div class="cta-section fade-in">
           <div>
             <!-- LOGO BLANCO ARRIBA DEL CARTEL -->
-            
+           
+                 style="display:block;margin:1rem auto .9rem auto;height:40px;">
             <div class="cta-highlight">Planes & acompañamiento · Sin compromiso</div>
             <h2>¿Te imaginás tu agenda ordenada y tu parte tech resuelta?</h2>
             <p>
@@ -1776,7 +1779,7 @@
     });
 
     promoModal2Btn.addEventListener('click', () => {
-      const text = encodeURIComponent("Hola Savia 👋 quiero contarte mi idea (web, turnero, sistema interno o app) y ver qué pack con descuento me recomendás.");
+      const text = encodeURIComponent("Hola Savia quiero contarte mi idea (web, turnero, sistema interno o app) y ver qué pack con descuento me recomendás.");
       window.open(`https://wa.me/5492613387305?text=${text}`, '_blank');
       promoModal2.classList.remove('open');
     });
