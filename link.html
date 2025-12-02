@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Savia – Links</title>
+
+  <!-- Favicon (cambiá la ruta si hace falta) -->
+  <link rel="icon" type="image/png" href="img/logo-savia.png">
+
+  <!-- Tipografías de SAVIA -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root{
+      --verde-savia:#4BAF8C;
+      --verde-claro:#A7E3CF;
+      --arena:#FFEFD9;
+      --durazno:#FFCCB3;
+      --texto:#18322E;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:'Poppins',system-ui,-apple-system,sans-serif;
+      background:var(--verde-savia);
+      color:var(--texto);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+    }
+
+    .page{
+      width:100%;
+      max-width:480px;
+      padding:32px 18px 40px;
+    }
+
+    .header{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .logo-circle{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .logo-circle img{
+      max-width:80%;
+      height:auto;
+    }
+
+    .brand-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.9rem;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      color:#fff;
+    }
+
+    .tagline{
+      font-size:.95rem;
+      color:#e8fff6;
+    }
+
+    .social-row{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .social-row a{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      border:2px solid #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      color:#fff;
+      font-size:1.1rem;
+      transition:transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .social-row a:hover{
+      transform:translateY(-2px);
+      background:#fff;
+      color:var(--verde-savia);
+    }
+
+    .links{
+      margin-top:24px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .link-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 18px;
+      border-radius:999px;
+      background:var(--arena);
+      text-decoration:none;
+      color:var(--texto);
+      font-size:1rem;
+      font-weight:500;
+      box-shadow:0 6px 18px rgba(0,0,0,.12);
+      transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .link-item span.icon-pill{
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
+      color:var(--verde-savia);
+    }
+
+    .link-item:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 26px rgba(0,0,0,.18);
+      background:var(--durazno);
+    }
+
+    .footer{
+      margin-top:30px;
+      text-align:center;
+      font-size:.78rem;
+      color:#e8fff6;
+      opacity:.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="header">
+      <div class="logo-circle">
+        <!-- Cambiá la ruta por la de tu logo SAVIA -->
+        <img src="img/logo_transparent_background.png" alt="Logo Savia">
+      </div>
+      <h1 class="brand-name">Savia</h1>
+      <p class="tagline">tu agenda más simple</p>
+
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5492610000000" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:hola@savia.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </header>
+
+    <main class="links">
+      <a class="link-item" href="#">
+        <span class="icon-pill"><i class="far fa-calendar-check"></i></span>
+        <span>Reservar un turno</span>
+      </a>
+
+      <a class="link-item" href="#">
+        <span class="icon-pill"><i class="fab fa-whatsapp"></i></span>
+        <span>Escribinos por WhatsApp</span>
+      </a>
+
+      <a class="link-item" href="#">
+        <span class="icon-pill"><i class="fab fa-instagram"></i></span>
+        <span>Seguir en Instagram</span>
+      </a>
+
+      <a class="link-item" href="#">
+        <span class="icon-pill"><i class="fas fa-globe"></i></span>
+        <span>Visitar web de Savia</span>
+      </a>
+    </main>
+
+    <footer class="footer">
+      Savia · Software &amp; programación para emprendedoras
+    </footer>
+
+  </div>
+
+</body>
+</html>
