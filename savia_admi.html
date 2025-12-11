@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Savia Admin · Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<link rel="icon" type="image/png" href="img/logo_transparent_background.png">
   <!-- Tipografías e iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -31,7 +31,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      padding:18px 10px;
+      padding:14px 10px;
       color:var(--texto);
       background:
         radial-gradient(circle at 0% 0%, #73d7b7 0, transparent 55%),
@@ -167,7 +167,7 @@
     /* MAIN */
     .admin-main{
       flex:1;
-      padding:16px 18px 18px;
+      padding:14px 18px 16px;
       display:flex;
       flex-direction:column;
       gap:12px;
@@ -209,7 +209,7 @@
     .page-section{
       background:rgba(255,255,255,.96);
       border-radius:20px;
-      padding:12px 12px 14px;
+      padding:10px 10px 12px;
       border:1px solid rgba(209,213,219,.85);
       box-shadow:0 18px 40px rgba(15,23,42,.18);
       display:none;
@@ -309,6 +309,40 @@
       font-size:.8rem;
       color:#6b7280;
       margin-bottom:6px;
+    }
+
+    /* Bloque destacado bienvenida */
+    .onb-highlight{
+      background:#ecfdf5;
+      border-radius:12px;
+      border:1px solid #bbf7d0;
+      padding:6px 8px;
+      margin-bottom:6px;
+    }
+    .onb-highlight-title{
+      font-size:.78rem;
+      color:#065f46;
+      margin-bottom:4px;
+    }
+    .onb-highlight-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .onb-tag{
+      font-size:.72rem;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#ffffff;
+      border:1px solid #bbf7d0;
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      color:#065f46;
+    }
+    .onb-tag i{
+      font-size:.8rem;
+      color:#16a34a;
     }
 
     .field-group{
@@ -445,9 +479,9 @@
       padding:6px;
       box-shadow:0 16px 36px rgba(15,23,42,.35);
       color:#111827;
-      max-width:340px;
+      max-width:350px;
       margin:0 auto;
-      height:480px;              /* alto fijo tipo celu */
+      height:420px;              /* alto fijo tipo celu */
       display:flex;
       align-items:stretch;
     }
@@ -924,61 +958,6 @@
       margin-bottom:4px;
     }
 
-    /* CTA REGISTRATE YA (abajo) */
-    .savia-cta{
-      margin-top:10px;
-      background:rgba(255,255,255,.96);
-      border-radius:22px;
-      padding:10px 12px;
-      border:1px solid rgba(209,213,219,.85);
-      box-shadow:0 12px 30px rgba(15,23,42,.2);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      font-size:.78rem;
-      max-width:360px;
-      margin:10px auto 0;   /* centrado y con margen */
-    }
-    .savia-cta strong{
-      display:block;
-      color:#022c22;
-    }
-    .savia-cta span{
-      color:#6b7280;
-      font-size:.75rem;
-    }
-    .savia-cta-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    }
-    .cta-btn{
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:.75rem;
-      border:none;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      cursor:pointer;
-      font-weight:500;
-    }
-    .cta-btn-wa{
-      background:linear-gradient(135deg,#22c55e,#16a34a);
-      color:#ffffff;
-      box-shadow:0 10px 24px rgba(22,163,74,.6);
-    }
-    .cta-btn-ig{
-      background:#ffffff;
-      border:1px solid #e5e7eb;
-      color:#6b7280;
-    }
-    .cta-btn-ig i{
-      color:#db2777;
-    }
-
     /* BREAKPOINTS: modo celular mejorado */
     @media (max-width:900px){
       body{
@@ -1025,10 +1004,6 @@
       }
       .preview-card{
         height:430px; /* un poquito menos alta en celu */
-      }
-      .savia-cta{
-        flex-direction:column;
-        align-items:flex-start;
       }
     }
 
@@ -1112,7 +1087,7 @@
     <!-- ONBOARDING -->
     <section class="page-section active" data-page="onboarding">
       <h2 class="section-title">Onboarding inicial</h2>
-      <p class="section-sub">Configurar datos de empresa, servicios y ver la mini landing en el mismo lugar.</p>
+      <p class="section-sub">Configurá tus datos y mirá, en la misma pantalla, cómo se ve tu web de reservas.</p>
 
       <div class="onb-steps-row">
         <div class="step-pill active" data-step-target="1"><span>1</span> Bienvenida</div>
@@ -1130,15 +1105,30 @@
           <div class="onb-panel active" data-step="1">
             <h3>Bienvenida a SAVIA Admin</h3>
             <p>En pocos pasos dejás tu negocio listo: datos, servicios y link de reservas preparado para compartir.</p>
+
+            <div class="onb-highlight">
+              <p class="onb-highlight-title">
+                Mirá lo simple que pueden ser tus días con Savia:
+              </p>
+              <div class="onb-highlight-row">
+                <span class="onb-tag"><i class="fa-regular fa-calendar-check"></i> Agenda ordenada día a día</span>
+                <span class="onb-tag"><i class="fa-regular fa-user"></i> Clientes y turnos en un solo lugar</span>
+                <span class="onb-tag"><i class="fa-solid fa-bell"></i> Recordatorios automáticos</span>
+              </div>
+            </div>
+
             <ul style="font-size:.8rem;color:#4b5563;margin-left:16px;margin-bottom:6px;">
               <li>• Cargás nombre, rubro y horarios.</li>
               <li>• Cargás tus servicios principales.</li>
               <li>• Ves cómo queda tu landing para clientes.</li>
               <li>• Entrás a un panel con agenda, clientes y estadísticas.</li>
             </ul>
-            <div class="btn-row">
+            <div class="btn-row" style="justify-content:space-between;flex-wrap:wrap;">
+              <button type="button" class="btn btn-outline btn-sm" data-next-step="4">
+                Ver primero mi mini web
+              </button>
               <button type="button" class="btn btn-primary" data-next-step="2">
-                Comenzar configuración <i class="fa-solid fa-arrow-right"></i>
+                Comencemos ya · Configurar mi negocio <i class="fa-solid fa-arrow-right"></i>
               </button>
             </div>
           </div>
@@ -1292,29 +1282,13 @@
               Podés navegar las otras secciones con el menú de la izquierda: Dashboard, Agenda, Clientes,
               Servicios y Mi empresa.
             </p>
-            <p class="small-note">
-              Si te gustó cómo se ve y querés tu turnero listo para tus clientas, escribinos por WhatsApp o Instagram.
-              ¡Muchas gracias por probar la demo! 💚
-            </p>
             <div class="btn-row" style="justify-content:space-between;flex-wrap:wrap;">
               <button type="button" class="btn btn-outline" data-prev-step="4">
                 <i class="fa-solid fa-arrow-left"></i> Atrás
               </button>
-              <div style="display:flex;flex-wrap:wrap;gap:6px;">
-                <a class="btn btn-outline btn-sm"
-                   href="https://wa.me/5492613387305?text=Hola%20Savia%2C%20prob%C3%A9%20la%20demo%20y%20quiero%20mi%20turnero%20online%20%F0%9F%92%9A"
-                   target="_blank" rel="noopener">
-                  <i class="fab fa-whatsapp"></i> WhatsApp Savia
-                </a>
-                <a class="btn btn-outline btn-sm"
-                   href="https://www.instagram.com/savia_app?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                   target="_blank" rel="noopener">
-                  <i class="fab fa-instagram"></i> Instagram Savia
-                </a>
-                <button type="button" class="btn btn-primary btn-sm" data-open-page="dashboard">
-                  Ver dashboard de ejemplo
-                </button>
-              </div>
+              <button type="button" class="btn btn-primary btn-sm" data-open-page="dashboard">
+                Ver dashboard de ejemplo
+              </button>
             </div>
           </div>
 
@@ -1357,7 +1331,7 @@
             </div>
 
             <p class="pv-callout">
-              Abajo ves un ejemplo de cómo se vería el bloque para solicitar turnos 💚
+              Deslizá dentro del celu para ver cómo sería pedir un turno y contactarte con tus clientas 💚
             </p>
 
             <!-- Mini bloque de turnos (PRIMERO) -->
@@ -1637,26 +1611,6 @@
       </p>
     </section>
 
-    <!-- CTA FINAL REGISTRATE -->
-    <div class="savia-cta">
-      <div>
-        <strong>¿Te gustaría tener tu SAVIA listo para tus clientas?</strong>
-        <span>Registrate ya: escribinos por WhatsApp o mirá ejemplos en Instagram @savia_app.</span>
-      </div>
-      <div class="savia-cta-actions">
-        <a class="cta-btn cta-btn-wa"
-           href="https://wa.me/5492613387305?text=Hola%20Savia%2C%20quiero%20contratar%20el%20turnero%20para%20mi%20negocio"
-           target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a class="cta-btn cta-btn-ig"
-           href="https://www.instagram.com/savia_app?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-           target="_blank" rel="noopener">
-          <i class="fab fa-instagram"></i> Instagram
-        </a>
-      </div>
-    </div>
-
   </main>
 </div>
 
@@ -1918,3 +1872,4 @@
 
 </body>
 </html>
+
