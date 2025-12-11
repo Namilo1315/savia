@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Savia Booking · Turnos online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Landing de turnos online para estéticas, peluquerías y profesionales del bienestar. Tus clientas reservan en segundos.">
+
+  <!-- Tipografías Savia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root{
+      --verde-savia:#4BAF8C;
+      --verde-oscuro:#2c7a62;
+      --verde-claro:#A7E3CF;
+      --arena:#FFEFD9;
+      --durazno:#FFCCB3;
+      --fondo-body:#f5f7fb;
+      --texto:#111827;
+      --texto-suave:#6B7280;
+      --card:#FFFFFF;
+      --borde:#E5E7EB;
+      --accent:#4BAF8C; /* se actualiza por JS según el negocio */
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      font-family:"Poppins",system-ui,-apple-system,sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, #c4f3de 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #ffd9bf 0, transparent 55%),
+        linear-gradient(145deg,#fef6ec,#e5fff5);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px 10px;
+      color:var(--texto);
+    }
+
+    .booking-shell{
+      width:100%;
+      max-width:460px;
+      border-radius:32px;
+      padding:8px;
+      background:linear-gradient(135deg,var(--accent),#ffccB3);
+      box-shadow:0 24px 60px rgba(15,23,42,.30);
+      position:relative;
+    }
+
+    .booking-body{
+      background:#f9fafb;
+      border-radius:26px;
+      padding:16px 14px 16px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 16px 40px rgba(15,23,42,.12);
+    }
+
+    .pill-top{
+      position:absolute;
+      top:8px;
+      left:50%;
+      transform:translateX(-50%);
+      width:110px;
+      height:10px;
+      border-radius:999px;
+      background:#E5E7EB;
+    }
+
+    .badge-top{
+      margin-top:18px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:.75rem;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(75,175,140,.12);
+      color:#064e3b;
+    }
+    .badge-top .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:#22c55e;
+    }
+
+    /* HEADER */
+    .booking-header{
+      margin-top:10px;
+      border-radius:20px;
+      padding:12px 10px;
+      background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(244,255,251,.95));
+      border:1px solid rgba(209,250,229,.9);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      box-shadow:0 14px 32px rgba(15,23,42,.16);
+    }
+
+    .header-logo{
+      width:60px;
+      height:60px;
+      border-radius:20px;
+      background:radial-gradient(circle at 20% 0,#ffffff,#e0f7ec);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 14px 32px rgba(15,118,110,.30);
+      overflow:hidden;
+      flex-shrink:0;
+    }
+    .header-logo img{
+      max-width:80%;
+      height:auto;
+      display:block;
+    }
+
+    .header-text{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+
+    .header-eyebrow{
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#6b7280;
+    }
+
+    .header-name{
+      font-size:1.1rem;
+      font-weight:600;
+      color:#022c22;
+    }
+
+    .header-slogan{
+      font-size:.8rem;
+      color:var(--texto-suave);
+    }
+
+    .header-rubro{
+      font-size:.76rem;
+      color:#065f46;
+    }
+
+    .section-title{
+      margin-top:12px;
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#6b7280;
+    }
+
+    .info-grid{
+      margin-top:6px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+
+    .info-card{
+      background:var(--card);
+      border-radius:18px;
+      padding:8px 9px 9px;
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:0 10px 24px rgba(148,163,184,.18);
+      font-size:.78rem;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .info-card-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:6px;
+    }
+
+    .info-card-header span{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-weight:600;
+      color:#111827;
+    }
+
+    .info-card-header i{
+      font-size:.9rem;
+      color:var(--accent);
+    }
+
+    .info-text{
+      font-size:.76rem;
+      color:var(--texto-suave);
+    }
+
+    .info-link{
+      margin-top:4px;
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      font-size:.74rem;
+      color:#2563eb;
+      text-decoration:none;
+    }
+
+    .info-link i{
+      font-size:.75rem;
+    }
+
+    .contact-buttons{
+      margin-top:4px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+
+    .btn-chip{
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#f9fafb;
+      padding:4px 9px;
+      font-size:.75rem;
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+      color:#374151;
+      text-decoration:none;
+    }
+
+    .btn-chip.primary{
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      border-color:transparent;
+      color:#ffffff;
+      box-shadow:0 10px 22px rgba(22,163,74,.7);
+    }
+
+    .btn-chip i{
+      font-size:.8rem;
+    }
+
+    /* FORMULARIO */
+    .form-card{
+      margin-top:10px;
+      background:var(--card);
+      border-radius:20px;
+      padding:10px 10px 11px;
+      border:1px solid rgba(148,163,184,.35);
+      box-shadow:0 14px 30px rgba(148,163,184,.22);
+    }
+
+    .form-card-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:6px;
+      margin-bottom:6px;
+    }
+
+    .form-card-header h2{
+      font-size:.95rem;
+      color:#111827;
+    }
+
+    .form-card-header span{
+      font-size:.76rem;
+      color:var(--texto-suave);
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-top:4px;
+    }
+
+    .field-group{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+
+    label{
+      font-size:.75rem;
+      color:#4b5563;
+    }
+
+    input, select{
+      width:100%;
+      border-radius:12px;
+      border:1px solid var(--borde);
+      padding:6px 8px;
+      font-size:.8rem;
+      background:#f9fafb;
+      outline:none;
+      transition:border-color .15s, box-shadow .15s, background .15s;
+    }
+
+    input:focus, select:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 1px rgba(74,222,128,.4);
+      background:#ffffff;
+    }
+
+    .field-row-2{
+      display:grid;
+      grid-template-columns:1.1fr 1fr;
+      gap:6px;
+    }
+
+    .senia-text{
+      font-size:.74rem;
+      color:#6b7280;
+      margin-top:3px;
+    }
+
+    .btn-submit{
+      margin-top:4px;
+      border:none;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:.82rem;
+      font-weight:500;
+      cursor:pointer;
+      color:#ffffff;
+      background:linear-gradient(135deg,var(--accent),#2c7a62);
+      box-shadow:0 12px 28px rgba(22,101,52,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+    }
+
+    .btn-submit:hover{
+      filter:brightness(1.06);
+    }
+
+    .form-extra{
+      margin-top:4px;
+      font-size:.74rem;
+      color:#6b7280;
+    }
+
+    .confirm-message{
+      margin-top:8px;
+      border-radius:16px;
+      padding:8px 9px;
+      background:#ecfdf5;
+      border:1px solid #bbf7d0;
+      font-size:.78rem;
+      color:#14532d;
+      display:none;
+    }
+
+    .confirm-message.show{
+      display:block;
+    }
+
+    footer{
+      margin-top:10px;
+      text-align:center;
+      font-size:.72rem;
+      color:#6b7280;
+    }
+
+    .footer-logo{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      justify-content:center;
+      margin-bottom:4px;
+    }
+
+    .footer-logo img{
+      width:20px;
+      height:20px;
+      border-radius:6px;
+      background:#ecfdf5;
+      object-fit:contain;
+    }
+
+    footer a{
+      color:#2563eb;
+      text-decoration:none;
+      font-weight:500;
+    }
+
+    .whatsapp-fab{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:54px;
+      height:54px;
+      border-radius:999px;
+      background:#22C55E;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#ffffff;
+      text-decoration:none;
+      box-shadow:0 20px 40px rgba(22,163,74,.7);
+      z-index:50;
+    }
+    .whatsapp-fab i{
+      font-size:1.6rem;
+    }
+
+    @media (max-width:520px){
+      body{
+        padding:14px 6px;
+      }
+      .booking-shell{
+        max-width:100%;
+      }
+      .field-row-2{
+        grid-template-columns:1fr;
+      }
+      .whatsapp-fab{
+        right:14px;
+        bottom:14px;
+        width:50px;
+        height:50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="booking-shell">
+  <div class="booking-body">
+    <div class="pill-top"></div>
+
+    <div class="badge-top">
+      <span class="dot"></span>
+      Reservá tu turno en segundos
+    </div>
+
+    <!-- HEADER -->
+    <header class="booking-header">
+      <div class="header-logo">
+        <!-- Logo del NEGOCIO -->
+        <img id="logo-negocio" src="img/logo_transparent_background.png" alt="Logo negocio">
+      </div>
+      <div class="header-text">
+        <p class="header-eyebrow">Turnos online</p>
+        <h1 class="header-name" id="bk-nombre-negocio">Nombre del negocio</h1>
+        <p class="header-slogan" id="bk-slogan">Slogan o frase corta.</p>
+        <p class="header-rubro" id="bk-rubro">Estética · Peluquería · Bienestar</p>
+      </div>
+    </header>
+
+    <!-- INFO RÁPIDA -->
+    <h2 class="section-title">Información rápida</h2>
+    <section class="info-grid">
+
+      <!-- Ubicación -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <span><i class="fa-solid fa-location-dot"></i> Ubicación</span>
+        </div>
+        <p class="info-text" id="bk-direccion">Dirección · Ciudad</p>
+        <a href="#" target="_blank" id="bk-link-mapas" class="info-link">
+          <i class="fa-regular fa-map"></i> Cómo llegar
+        </a>
+      </article>
+
+      <!-- Horarios (RESUMIDOS) -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <span><i class="fa-regular fa-clock"></i> Horarios</span>
+        </div>
+        <p class="info-text" id="bk-horarios-resumen">
+          Lunes a viernes 09:00 a 20:00 hs · Sábados 09:00 a 13:00 hs
+        </p>
+      </article>
+
+      <!-- Contacto -->
+      <article class="info-card">
+        <div class="info-card-header">
+          <span><i class="fa-regular fa-message"></i> Contacto</span>
+        </div>
+        <p class="info-text">Elegí cómo querés comunicarte o reservá desde el formulario.</p>
+        <div class="contact-buttons">
+          <a href="#" target="_blank" id="bk-wa-main" class="btn-chip primary">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="#" target="_blank" id="bk-ig-main" class="btn-chip">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+          <a href="#" id="bk-call-main" class="btn-chip">
+            <i class="fa-solid fa-phone"></i> Llamar
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="form-card" id="reservar">
+      <div class="form-card-header">
+        <div>
+          <h2>Solicitar turno</h2>
+          <span>Completá tus datos y elegí el horario</span>
+        </div>
+      </div>
+
+      <form id="booking-form">
+        <div class="field-group">
+          <label for="bk-servicio">Servicio</label>
+          <select id="bk-servicio" required></select>
+        </div>
+
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="bk-nombre-cliente">Nombre y apellido</label>
+            <input type="text" id="bk-nombre-cliente" placeholder="Ej: María López" required>
+          </div>
+          <div class="field-group">
+            <label for="bk-nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="bk-nacimiento">
+          </div>
+        </div>
+
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="bk-telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="bk-telefono" placeholder="Ej: 2613 38-7305" required>
+          </div>
+          <div class="field-group">
+            <label for="bk-mail">Mail</label>
+            <input type="email" id="bk-mail" placeholder="Ej: nombre@mail.com">
+          </div>
+        </div>
+
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="bk-dia">Día disponible</label>
+            <input type="date" id="bk-dia" required>
+          </div>
+          <div class="field-group">
+            <label for="bk-horario">Horario disponible</label>
+            <select id="bk-horario" required></select>
+          </div>
+        </div>
+
+        <div class="field-group" id="bk-modalidad-group">
+          <label for="bk-modalidad">Modalidad</label>
+          <select id="bk-modalidad"></select>
+        </div>
+
+        <p class="senia-text" id="bk-senia-info">
+          Si el servicio requiere seña, te vamos a indicar el link de pago luego de solicitar el turno.
+        </p>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-regular fa-calendar-check"></i> Solicitar turno
+        </button>
+
+        <p class="form-extra">
+          Tu turno queda enviado a la agenda del negocio y se confirma por WhatsApp.
+        </p>
+      </form>
+
+      <div class="confirm-message" id="bk-confirm">
+        <strong>Tu turno fue solicitado ✨</strong>
+        <br>
+        Te vamos a confirmar la disponibilidad por WhatsApp. Si el servicio tiene seña, vas a recibir el link de pago o instrucciones para abonarla.
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        <img src="img/logo_transparent_background.png" alt="Logo Savia">
+        <span>Sistema de turnos desarrollado por SAVIA</span>
+      </div>
+      <a href="#" id="bk-link-savia" target="_blank" rel="noopener">
+        Ver más sobre Savia
+      </a>
+    </footer>
+  </div>
+</div>
+
+<!-- Botón flotante WhatsApp -->
+<a href="#" target="_blank" rel="noopener" id="wa-fab" class="whatsapp-fab" aria-label="Escribir por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // CONFIG DEMO (luego esto vendrá de Firebase)
+  const demoBookingConfig = {
+    colorPrincipal: "#4BAF8C",
+    nombreNegocio: "Estética Bellezza",
+    slogan: "Tu espacio de autocuidado.",
+    rubro: "Estética · Uñas · Masajes",
+    direccion: "San Martín 123",
+    ciudad: "Maipú · Mendoza",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=San+Martín+123+Maipú+Mendoza",
+    logoNegocio: "",
+    horariosResumen: "Lunes a viernes 09:00 a 20:00 hs · Sábados 09:00 a 13:00 hs",
+    contactos: {
+      whatsapp: "2613387305",
+      instagram: "https://www.instagram.com/",
+      telefono: "+54 261 444-0000"
+    },
+    urlSavia: "https://namilo1315.github.io/savia/",
+    horariosDefault: ["09:00","10:00","11:00","16:00","18:00"],
+    servicios: [
+      {
+        id: "s1",
+        nombre: "Limpieza facial",
+        modalidad: "Presencial",
+        requiereSenia: true,
+        seniaPorcentaje: 20,
+        textoSenia: "Reservás con 20% de seña. El resto lo abonás en el local.",
+        linkPago: ""
+      },
+      {
+        id: "s2",
+        nombre: "Uñas semipermanentes",
+        modalidad: "Presencial",
+        requiereSenia: false,
+        seniaPorcentaje: 0,
+        textoSenia: "La seña se coordina por WhatsApp si el profesional lo requiere."
+      },
+      {
+        id: "s3",
+        nombre: "Masaje descontracturante",
+        modalidad: "Presencial",
+        requiereSenia: true,
+        seniaPorcentaje: 30,
+        textoSenia: "Reservás con 30% de seña. Te mandamos el link de pago al confirmar.",
+        linkPago: ""
+      }
+    ]
+  };
+
+  const bookingConfig = window.SAVIA_BOOKING_CONFIG || demoBookingConfig;
+
+  function initBooking(){
+    document.documentElement.style.setProperty("--accent", bookingConfig.colorPrincipal || "#4BAF8C");
+
+    if(bookingConfig.nombreNegocio){
+      document.title = bookingConfig.nombreNegocio + " · Turnos online";
+    }
+
+    // HEADER
+    document.getElementById("bk-nombre-negocio").textContent =
+      bookingConfig.nombreNegocio || "Nombre del negocio";
+
+    document.getElementById("bk-slogan").textContent =
+      bookingConfig.slogan || "Slogan o frase corta.";
+
+    document.getElementById("bk-rubro").textContent =
+      bookingConfig.rubro || "Estética · Peluquería · Bienestar";
+
+    const logoNegocio = document.getElementById("logo-negocio");
+    if(bookingConfig.logoNegocio && bookingConfig.logoNegocio.trim() !== ""){
+      logoNegocio.src = bookingConfig.logoNegocio;
+    }
+
+    // UBICACIÓN
+    document.getElementById("bk-direccion").textContent =
+      (bookingConfig.direccion || "Dirección a confirmar") +
+      (bookingConfig.ciudad ? " · " + bookingConfig.ciudad : "");
+
+    const mapasLink = document.getElementById("bk-link-mapas");
+    mapasLink.href = bookingConfig.mapsUrl || "#";
+
+    // HORARIOS RESUMIDOS
+    const hRes = document.getElementById("bk-horarios-resumen");
+    hRes.textContent = bookingConfig.horariosResumen ||
+      "Lunes a viernes 09:00 a 20:00 hs · Sábados 09:00 a 13:00 hs";
+
+    // CONTACTO
+    const waBtn = document.getElementById("bk-wa-main");
+    const igBtn = document.getElementById("bk-ig-main");
+    const callBtn = document.getElementById("bk-call-main");
+    const waFab = document.getElementById("wa-fab");
+
+    const telWhats = (bookingConfig.contactos && bookingConfig.contactos.whatsapp) || "";
+    const telClean = telWhats.replace(/[^\d]/g,"");
+    let waHref = "#";
+    if(telClean){
+      waHref = "https://wa.me/54" + telClean +
+        "?text=" + encodeURIComponent("Hola, quiero reservar un turno 🙌");
+    }
+    waBtn.href = waHref;
+    waFab.href = waHref;
+
+    if(bookingConfig.contactos && bookingConfig.contactos.instagram){
+      igBtn.href = bookingConfig.contactos.instagram;
+    }else{
+      igBtn.href = "#";
+    }
+
+    if(bookingConfig.contactos && bookingConfig.contactos.telefono){
+      callBtn.href = "tel:" + bookingConfig.contactos.telefono.replace(/\s/g,"");
+    }else{
+      callBtn.href = "#";
+    }
+
+    // FOOTER SAVIA
+    const linkSavia = document.getElementById("bk-link-savia");
+    linkSavia.href = bookingConfig.urlSavia || "#";
+
+    // FORMULARIO
+    const selectServicio = document.getElementById("bk-servicio");
+    const selectHorario = document.getElementById("bk-horario");
+    const selectModalidad = document.getElementById("bk-modalidad");
+    const modalidadGroup = document.getElementById("bk-modalidad-group");
+    const seniaInfo = document.getElementById("bk-senia-info");
+
+    const servicios = bookingConfig.servicios || [];
+    selectServicio.innerHTML = "";
+
+    if(!servicios.length){
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "Servicios a confirmar";
+      selectServicio.appendChild(opt);
+      selectServicio.disabled = true;
+    }else{
+      servicios.forEach((s,idx) => {
+        const opt = document.createElement("option");
+        opt.value = s.id || ("sx"+idx);
+        opt.textContent = s.nombre;
+        selectServicio.appendChild(opt);
+      });
+      selectServicio.disabled = false;
+    }
+
+    const horariosBase = bookingConfig.horariosDefault || ["09:00","10:00","11:00","16:00","18:00"];
+    function llenarHorarios(){
+      selectHorario.innerHTML = "";
+      horariosBase.forEach(h => {
+        const opt = document.createElement("option");
+        opt.value = h;
+        opt.textContent = h + " hs";
+        selectHorario.appendChild(opt);
+      });
+    }
+    llenarHorarios();
+
+    const modalidadesSet = new Set();
+    servicios.forEach(s => {
+      if(s.modalidad) modalidadesSet.add(s.modalidad);
+    });
+    const modalidades = Array.from(modalidadesSet);
+    if(modalidades.length){
+      modalidadGroup.style.display = "block";
+      selectModalidad.innerHTML = "";
+      modalidades.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        selectModalidad.appendChild(opt);
+      });
+    }else{
+      modalidadGroup.style.display = "none";
+    }
+
+    function actualizarSenia(){
+      const value = selectServicio.value;
+      const servicio = servicios.find(s => (s.id || "") === value) ||
+                       servicios[selectServicio.selectedIndex] || null;
+      if(!servicio){
+        seniaInfo.textContent = "Si el servicio requiere seña, te vamos a indicar el link de pago luego de solicitar el turno.";
+        return;
+      }
+      if(servicio.requiereSenia){
+        const pct = servicio.seniaPorcentaje || 0;
+        const txt = servicio.textoSenia ||
+          `Este servicio reserva con una seña del ${pct || ""}% del valor. Te compartimos el link de pago al confirmar.`;
+        seniaInfo.textContent = txt;
+      }else{
+        seniaInfo.textContent =
+          servicio.textoSenia ||
+          "Este servicio no requiere seña inmediata. Confirmamos el turno por WhatsApp.";
+      }
+    }
+
+    if(selectServicio){
+      selectServicio.addEventListener("change", actualizarSenia);
+      actualizarSenia();
+    }
+
+    const inputDia = document.getElementById("bk-dia");
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,"0");
+    const dd = String(today.getDate()).padStart(2,"0");
+    inputDia.min = `${yyyy}-${mm}-${dd}`;
+
+    const form = document.getElementById("booking-form");
+    const confirmMsg = document.getElementById("bk-confirm");
+
+    form.addEventListener("submit",(e)=>{
+      e.preventDefault();
+      if(selectServicio.disabled){
+        alert("Por favor, consultá directamente con el negocio: todavía no cargó sus servicios.");
+        return;
+      }
+
+      const servicioId = selectServicio.value;
+      const servicio = servicios.find(s => (s.id || "") === servicioId) ||
+                       servicios[selectServicio.selectedIndex];
+
+      const turno = {
+        negocio: bookingConfig.nombreNegocio || "",
+        servicioId,
+        servicioNombre: servicio ? servicio.nombre : "",
+        nombreCliente: document.getElementById("bk-nombre-cliente").value.trim(),
+        nacimiento: document.getElementById("bk-nacimiento").value || null,
+        telefono: document.getElementById("bk-telefono").value.trim(),
+        mail: document.getElementById("bk-mail").value.trim(),
+        dia: document.getElementById("bk-dia").value,
+        horario: document.getElementById("bk-horario").value,
+        modalidad: modalidades.length ? document.getElementById("bk-modalidad").value : null,
+        requiereSenia: servicio ? !!servicio.requiereSenia : false
+      };
+
+      // Acá después lo vas a mandar a Firebase:
+      console.log("Turno listo para enviar a Firebase:", turno);
+
+      if(servicio && servicio.requiereSenia && servicio.linkPago){
+        window.open(servicio.linkPago, "_blank");
+      }
+
+      confirmMsg.classList.add("show");
+
+      form.reset();
+      llenarHorarios();
+      inputDia.min = `${yyyy}-${mm}-${dd}`;
+      actualizarSenia();
+      confirmMsg.scrollIntoView({behavior:"smooth",block:"center"});
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initBooking);
+</script>
+</body>
+</html>
